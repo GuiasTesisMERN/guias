@@ -11,16 +11,17 @@ const fechaLogger = {
 
 const myFormat = printf(({level, message, timestamp, ...metadata}) => {
 
-    let mensajeHeader = "==================== INICIO ====================\n";
-    let mensajeFooter = "\n==================== FINAL  ====================\n";
-
-    let mensaje = `${level} [${timestamp}] : ${message}`;
-
-    if(metadata) {
-        mensaje += '\n' + JSON.stringify(metadata);
+    let mensaje = {
+        header: "==================== INICIO ====================\n",
+        data: `${level} [${timestamp}] : ${message}`,
+        footer: "\n==================== FINAL  ====================\n"
     }
 
-    return mensajeHeader + mensaje + mensajeFooter;
+    if(metadata) {
+        mensaje.data += '\n' + JSON.stringify(metadata);
+    }
+
+    return mensaje.header + mensaje.data + mensaje.footer;
 });
 
 const logger = createLogger({
@@ -37,8 +38,8 @@ const logger = createLogger({
         new transports.File({ 
             
             filename: `src/logs/app_error_${fechaLogger.mes}_${fechaLogger.dia}_${fechaLogger.anyo}.log`,
-            maxFiles: 3,
-            maxsize: 1000000, //Max size Bytes
+            maxFiles: 3, // Crea 3 archivos y elimina el ultimo creado cuando supera la cifra indicada
+            maxsize: 1000000, //Max size Bytes (100 KB)
             
         })
     ]

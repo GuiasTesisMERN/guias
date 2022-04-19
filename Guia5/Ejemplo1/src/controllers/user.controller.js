@@ -1,5 +1,4 @@
 // ./src/controllers/user.controller.js
-const httpError = require('express-exception-handler').exception;
 const { FindUserByEmailAndPassword } = require('../services/user.services');
 
 module.exports = {
@@ -11,6 +10,7 @@ module.exports = {
         res.status(200).json(
             {
                 mensaje: "Usuario encontrado",
+                estado: true,
                 datos: usuario
             }
         );

@@ -8,12 +8,12 @@ const STATUS_CODES = {
 };
 /**
  * CustomException: Para el manejo de excepciones
- * @param  {string} name
- * @param  {Number} statusCode
- * @param  {string} description
- * @param  {boolean} isOperational
- * @param  {boolean} errorStack
- * @param  {boolean} loggingErrorResponse
+ * @param  {string} name Nombre de la excepcion
+ * @param  {Number} statusCode Codigo de estado de la excepcion
+ * @param  {string} description Mensaje o descripcion de la excepcion o error
+ * @param  {boolean} isOperational Indica si la excepcion es operacional
+ * @param  {boolean} errorStack El trace del error
+ * @param  {boolean} loggingErrorResponse Indica si mostramos el error de la respuesta
  */
 class AppError extends Error {
     constructor(name, statusCode, description, isOperational, errorStack, loggingErrorResponse) {
@@ -24,27 +24,42 @@ class AppError extends Error {
         this.isOperational = isOperational
         this.errorStack = errorStack;
         this.logError = loggingErrorResponse;
-        Error.captureStackTrace(this);
+        Error.captureStackTrace(this, this.errorStack);
     }
 }
 
 //api Specific Errors
 class APIError extends AppError {
-    constructor(name = 'Api Error', statusCode = STATUS_CODES.INTERNAL_ERROR, description ='Internal Server Error',isOperational = true,){
+    constructor(name = 'Api Error', 
+        statusCode = STATUS_CODES.INTERNAL_ERROR, 
+        description = 'Internal Server Error',
+        isOperational = true
+    ){
         super(name,statusCode,description,isOperational);
     }
 }
 
 class BadRequestError extends AppError {
-    constructor(description = 'Bad request', loggingErrorResponse = true){
-        super('BAD REQUEST', STATUS_CODES.BAD_REQUEST, description, true, false, loggingErrorResponse);
+    constructor(description = 'Bad request', 
+        loggingErrorResponse = true
+    ){
+        super('BAD REQUEST', 
+            STATUS_CODES.BAD_REQUEST, 
+            description, true, false, 
+            loggingErrorResponse
+        );
     }
 }
 
 //400
 class ValidationError extends AppError {
     constructor(description = 'Validation Error', errorStack){
-        super('VALIDATION ERROR', STATUS_CODES.BAD_REQUEST,description,true, errorStack);
+        super('VALIDATION ERROR', 
+            STATUS_CODES.BAD_REQUEST,
+            description,
+            true,
+            errorStack
+        );
     }
 }
 

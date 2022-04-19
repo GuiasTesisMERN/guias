@@ -30,9 +30,11 @@ const ErrorHandler = async(err, req, res, next) => {
     })
     
     if(err){
-        errorLogger.log({level: 'error', message: err.message,...err});
         if(isTrustError(err)){
-            if(err.errorStack){
+            
+            errorLogger.log({level: 'error', message: err.message,...err});
+
+            if(err.errorStack) {
                 const errorDescription = err.errorStack;
                 return res.status(err.statusCode).json({
                     mensaje: errorDescription,
@@ -45,9 +47,13 @@ const ErrorHandler = async(err, req, res, next) => {
             })
         }else{
             console.log(err);
-            //process exit // terriablly wrong with flow need restart
+            //process exit 
+            //Ocurrio un error inesperado y deberiamos de reiniciar el proceso y/o servicio
         }
-        return res.status(STATUS_CODES.INTERNAL_ERROR).json({'message': err.message})
+        return res.status(STATUS_CODES.INTERNAL_ERROR).json({
+            mensaje: err.message,
+            error: true,
+        });
     }
     next();
 }
