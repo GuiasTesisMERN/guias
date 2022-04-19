@@ -1,0 +1,11 @@
+2022-04-16T03:46:20.547Z [[31merror[39m] : BAD REQUEST: Datos ingresados de manera incorrecta{}
+2022-04-16T03:46:48.147Z [[31merror[39m] : BAD REQUEST: Datos ingresados de manera incorrecta{}
+2022-04-16T03:46:52.427Z [[31merror[39m] : BAD REQUEST: Email y/o clave incorrecta{}
+2022-04-16T04:42:46.141Z [[31merror[39m] : BAD REQUEST: Email y/o clave incorrecta{}
+2022-04-16T04:44:20.977Z [[31merror[39m] : BAD REQUEST: Email y/o clave incorrecta{}
+2022-04-16T04:44:52.176Z [[31merror[39m] : BAD REQUEST: Email y/o clave incorrecta{}
+2022-04-16T04:53:20.638Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T04:54:17.575Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T04:54:42.794Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T04:55:03.831Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T05:05:42.851Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}

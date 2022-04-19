@@ -56,10 +56,6 @@ module.exports = {
 
         const usuario = users.find(user => user.id === id);
 
-        if(typeof usuario === "undefined") {
-            throw new httpError('Error', 404, "Email no registrado")
-        }
-
         return {
             id, email, nombre
         };

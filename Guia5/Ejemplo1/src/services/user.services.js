@@ -2,44 +2,19 @@
 const httpError = require('express-exception-handler').exception;
 const Validator = require('validatorjs');
 Validator.useLang('es');
-const { users } = require('../models/User');
-const UserRepository = require('../models/repository/UserRepository');
-
-const repository = new UserRepository();
+const { UserModel } = require('../models/User');
+const { BadRequestError } = require('../utils/app-errors');
 
 module.exports = {
+    async FindUserByEmailAndPassword(user) {
+        const { email, password } = user;
 
-    async SignUp(user) {
-        const { nombres, apellidos, email, password } = user;
+        const data = UserModel.find(u => u.email === email && u.password === password);
 
-        const newUser = await repository.CreateUser({nombres, apellidos, email, password});
-
-        return newUser;
-    },
-
-    /**
-     * @description Obtener el usuario solicitado por el email de la peticion
-     * @param {string} email 
-     * @returns object
-     */
-    getUserByEmail (email) {
-        let rules = {
-            email: 'required|email'
+        if(data === undefined) {
+            throw new BadRequestError('Email y/o clave incorrecta')
         }
 
-        let validacion = new Validator({ email }, rules);
-
-        if(validacion.fails()) {
-            throw new httpError('Datos enviados incorrectos', 400, validacion.errors.all())
-        }
-
-        //Busca al usuario por email con el metodo find
-        const usuario = users.find(user => user.email === email);
-
-        if(typeof usuario === "undefined") {
-            throw new httpError('Error', 404, "Email no registrado")
-        }
-
-        return usuario;
+        return data;
     }
 }

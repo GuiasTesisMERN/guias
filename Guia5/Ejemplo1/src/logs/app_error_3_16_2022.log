@@ -1,0 +1,49 @@
+2022-04-16T16:42:19.608Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T16:43:43.888Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T16:44:08.573Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T16:44:15.999Z [[31merror[39m] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T16:46:58.706Z [error] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T16:47:09.981Z [error] : undefined
+2022-04-16T16:47:30.763Z [error] : undefined{"err":{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}}
+2022-04-16T16:47:49.511Z [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16T16:48:13.509Z [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16T22:54:52.198Z [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16T22:56:00.941Z [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16T22:56:43.051Z [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16T22:58:12.868Z [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16T23:05:18.899Z [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+undefined [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16T23:09:20.895Z [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 17:10:31 [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 17:11:10 [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 17:11:34 [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 17:12:01 [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 18:28:56 [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 18:29:16 [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 18:29:27 [error] : Email y/o clave incorrecta{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 18:29:51 [error] : undefined{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 18:30:16 [error] : [31mEmail y/o clave incorrecta[39m{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 18:31:11 [[31merror[39m] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 18:32:10 [[31merror[39m] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+2022-04-16 18:32:51 [[31merror[39m] : Email y/o clave incorrecta
+{"name":"VALIDATION ERROR","statusCode":400,"isOperational":true}
+2022-04-16 19:18:23 [[31merror[39m] : Email y/o clave incorrecta
+{"name":"VALIDATION ERROR","statusCode":400,"isOperational":true}
+2022-04-16 19:18:40 [[31merror[39m] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+[31MERROR[39M [2022-04-16 19:21:33] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+function toUpperCase() { [native code] } [2022-04-16 19:21:54] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+[31MERROR[39M [2022-04-16 19:22:13] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+[31MERROR[39M [2022-04-16 19:22:33] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+[31MERROR[39M [2022-04-16 19:22:41] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+[31merror[39m [2022-04-16 19:23:06] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
+[31merror[39m [2022-04-16 19:26:12] : Email y/o clave incorrecta
+{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
