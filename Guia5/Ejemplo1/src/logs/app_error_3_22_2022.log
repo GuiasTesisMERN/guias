@@ -1,0 +1,25 @@
+==================== INICIO ====================
+[31merror[39m [2022-04-22 08:36:16] : {"errors":{"password":["El campo password debe contener al menos 8 caracteres."]}}
+{"name":"VALIDATION ERROR","statusCode":400,"isOperational":true}
+==================== FINAL  ====================
+
+==================== INICIO ====================
+[31merror[39m [2022-04-22 08:37:20] : {"errors":{"password":["El campo password debe contener al menos 8 caracteres."]}}
+{"name":"VALIDATION ERROR","statusCode":400,"isOperational":true}
+==================== FINAL  ====================
+
+==================== INICIO ====================
+[31merror[39m [2022-04-22 08:37:23] : {"errors":{"password":["El campo password debe contener al menos 8 caracteres."]}}
+{"name":"VALIDATION ERROR","statusCode":400,"isOperational":true}
+==================== FINAL  ====================
+
+==================== INICIO ====================
+[31merror[39m [2022-04-22 08:37:31] : {"errors":{"password":["El campo password debe contener al menos 8 caracteres."]}}
+{"name":"VALIDATION ERROR","statusCode":400,"isOperational":true}
+==================== FINAL  ====================
+
+==================== INICIO ====================
+[[31merror[39m 2022-04-22 09:51:37] : {"errors":{"password":["El campo password debe contener al menos 8 caracteres."]}}
+{"name":"VALIDATION ERROR","statusCode":400,"isOperational":true}
+==================== FINAL  ====================
+

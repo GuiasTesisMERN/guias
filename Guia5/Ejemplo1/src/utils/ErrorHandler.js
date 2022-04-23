@@ -1,10 +1,10 @@
 const { AppError, STATUS_CODES } = require('./app-errors');
-const logger = require('./ErrorLogger')
+const logger = require('./Logger')
 
 /**
  * Verifica si el error es de la clase APPError
  * @param {Error} error 
- * @returns 
+ * @returns {boolean}
  */
 const isTrustError = (error) => {
     if(error instanceof AppError){
@@ -23,9 +23,10 @@ const ErrorHandler = async(err, req, res, next) => {
     })
 
     process.on('uncaughtException', (error) => {
-        //errorLogger.log(error);
-        if(isTrustError(err)){
+        if(isTrustError(error)){
             //process exist // need restart
+		    console.log(`Uncaught Exception: ${error.message}`)
+			process.exit(-1);
         }
     })
     
@@ -35,9 +36,9 @@ const ErrorHandler = async(err, req, res, next) => {
             errorLogger.log({level: 'error', message: err.message,...err});
 
             if(err.errorStack) {
-                const errorDescription = err.errorStack;
                 return res.status(err.statusCode).json({
-                    mensaje: errorDescription,
+                    mensaje: err.message,
+                    detalle: err.errorStack,
                     error: true
                 })
             }
@@ -48,7 +49,8 @@ const ErrorHandler = async(err, req, res, next) => {
         }else{
             console.log(err);
             //process exit 
-            //Ocurrio un error inesperado y deberiamos de reiniciar el proceso y/o servicio
+            //Ocurrio un error inesperado y deberiamos de reiniciar 
+            //el proceso y/o servicio
         }
         return res.status(STATUS_CODES.INTERNAL_ERROR).json({
             mensaje: err.message,

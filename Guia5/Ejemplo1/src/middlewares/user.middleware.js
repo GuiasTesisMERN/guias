@@ -1,4 +1,4 @@
-
+// ./scr/middlewares/user.middleware.js
 const Validator = require('validatorjs');
 Validator.useLang('es');
 
@@ -10,13 +10,15 @@ module.exports = {
 
         let rules = {
             email: 'required|email',
-            password: 'required|min:8'
+            password: 'required|min:6'
         }
 
         let validation = new Validator(req.body, rules);
 
         if(validation.fails()) {
-            throw new ValidationError(JSON.stringify(validation.errors))
+            throw new ValidationError(
+                "Los datos ingresados tienen el formato incorrecto", 
+                validation.errors.all());
         }
 
         next();

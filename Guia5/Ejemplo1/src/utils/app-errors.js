@@ -12,7 +12,7 @@ const STATUS_CODES = {
  * @param  {Number} statusCode Codigo de estado de la excepcion
  * @param  {string} description Mensaje o descripcion de la excepcion o error
  * @param  {boolean} isOperational Indica si la excepcion es operacional
- * @param  {boolean} errorStack El trace del error
+ * @param  {boolean | object} errorStack Indica mas información del error (Errores de validacion)
  * @param  {boolean} loggingErrorResponse Indica si mostramos el error de la respuesta
  */
 class AppError extends Error {

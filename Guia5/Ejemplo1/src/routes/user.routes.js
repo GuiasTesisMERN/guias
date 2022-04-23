@@ -5,7 +5,7 @@ const { validarLogin } = require('../middlewares/user.middleware');
 const UserRoute = Router();
 
 /**
- * Manejo de errores global
+ * Higher order function para manejar las excepciones lanzadas en las demas funciones
  * @param {function} fn 
  * @returns
  */
