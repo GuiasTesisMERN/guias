@@ -1,6 +1,7 @@
 // ./src/services/user.services.js
 const { UserModel } = require('../models/User');
 const { BadRequestError } = require('../utils/app-errors');
+const { generateAccessToken } = require('../utils/Auth');
 
 module.exports = {
     /**
@@ -23,6 +24,8 @@ module.exports = {
         if(data === undefined) {
             throw new BadRequestError('Email y/o clave incorrecta');
         }
+
+        data.token = generateAccessToken(email);
 
         return data;
     }

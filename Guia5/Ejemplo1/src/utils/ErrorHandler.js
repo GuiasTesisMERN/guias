@@ -31,9 +31,9 @@ const ErrorHandler = async(err, req, res, next) => {
     })
     
     if(err){
+        errorLogger.error(err.message, {...err});
+        
         if(isTrustError(err)){
-            
-            errorLogger.log('error', err.message, {...err});
 
             if(err.errorStack) {
                 return res.status(err.statusCode).json({

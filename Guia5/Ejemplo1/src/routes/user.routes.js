@@ -1,7 +1,9 @@
 // ./scr/routes/user.routes.js
 const { Router } = require('express');
 const { login } = require('../controllers/user.controller');
+const { usuarioAutenticado } = require('../middlewares/auth.middleware');
 const { validarLogin } = require('../middlewares/user.middleware');
+const User = require('../models/User');
 const UserRoute = Router();
 
 /**
@@ -14,6 +16,7 @@ const asyncHandler = fn => (req, res, next) => {
 }
 
 UserRoute.get('/login', asyncHandler(validarLogin), asyncHandler(login));
+UserRoute.get('/test', asyncHandler(usuarioAutenticado), asyncHandler((req, res) => { res.status(200).json({mensaje: "Usuario logeado papu"}) }))
 
 module.exports = {
     UserRoute

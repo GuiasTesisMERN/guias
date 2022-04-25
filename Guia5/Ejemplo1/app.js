@@ -15,7 +15,6 @@ module.exports = async (app) => {
 
     //Solo deberia de acceder aqui si la ruta no existe
     app.use('*', (req, res, next) => {
-        console.log(req.baseUrl);
         throw new APIError(
             "Ruta solicitada no existe", 
             STATUS_CODES.NOT_FOUND, 

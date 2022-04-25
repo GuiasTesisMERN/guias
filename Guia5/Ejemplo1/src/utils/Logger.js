@@ -3,13 +3,13 @@ const { combine, splat, timestamp, printf } = format;
 const path = require('path')
 
 const logObj = {
-    directory: path.resolve(path.dirname(__dirname), './', 'logs'),
+    directory: path.resolve(path.dirname(__dirname), './', '../', 'logs'),
     fileSize: 1000000, //Max size Bytes (100 KB)
     numberOfFiles: 3 //Numero maximo de archivos creados
 }
 
 const myFormat = printf(({level, message, timestamp, ...metadata}) => {
-    let mensaje = `[${level} ${timestamp}] : ${message}`
+    let mensaje = `[${level} ${timestamp}] : ${message}`;
 
     if(JSON.stringify(metadata) !== '{}') {
         mensaje += '\n' + JSON.stringify(metadata);

@@ -1,3 +1,8 @@
+### Descripción
+
+Guia 5: Se implementaron los middleware custom, un manejador de errores,
+y un middleware para aplicar autenticación por Token.
+
 ```mermaid
 flowchart LR
     http_req[HTTP Request] --> express
