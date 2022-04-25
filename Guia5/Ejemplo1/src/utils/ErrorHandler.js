@@ -46,12 +46,6 @@ const ErrorHandler = async(err, req, res, next) => {
                 mensaje: err.message,
                 error: true
             })
-        }else{
-            console.log(err);
-            process.exit(-1);
-            //process exit 
-            //Ocurrio un error inesperado y deberiamos de reiniciar 
-            //el proceso y/o servicio
         }
         return res.status(STATUS_CODES.INTERNAL_ERROR).json({
             mensaje: err.message,

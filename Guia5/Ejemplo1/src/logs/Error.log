@@ -1,2 +1,0 @@
-[[31merror[39m 2022-04-24 14:53:53] : [31mEmail y/o clave incorrecta[39m
-{"name":"BAD REQUEST","statusCode":400,"isOperational":true,"errorStack":false,"logError":true}
