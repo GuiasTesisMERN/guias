@@ -33,7 +33,7 @@ const ErrorHandler = async(err, req, res, next) => {
     if(err){
         if(isTrustError(err)){
             
-            errorLogger.log({level: 'error', message: err.message,...err});
+            errorLogger.log('error', err.message, {...err});
 
             if(err.errorStack) {
                 return res.status(err.statusCode).json({
@@ -48,6 +48,7 @@ const ErrorHandler = async(err, req, res, next) => {
             })
         }else{
             console.log(err);
+            process.exit(-1);
             //process exit 
             //Ocurrio un error inesperado y deberiamos de reiniciar 
             //el proceso y/o servicio
