@@ -71,6 +71,14 @@ class UnAuthorizedError extends AppError {
     }
 }
 
+//403
+class ForbiddenError extends AppError {
+    constructor(description = "Token de autenticación inválido"){
+        super('FORBIDDEN ERROR', STATUS_CODES.FORBIDDEN,
+            description,true, false);
+    }
+}
+
 
 module.exports = {
     AppError,
@@ -78,5 +86,6 @@ module.exports = {
     BadRequestError,
     ValidationError,
     UnAuthorizedError,
+    ForbiddenError,
     STATUS_CODES,
 }

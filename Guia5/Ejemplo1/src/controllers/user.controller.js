@@ -1,5 +1,5 @@
 // ./src/controllers/user.controller.js
-const { FindUserByEmailAndPassword } = require('../services/user.services');
+const { FindUserByEmailAndPassword, FindUserByEmail } = require('../services/user.services');
 
 module.exports = {
     async login(req, res) {
@@ -15,4 +15,11 @@ module.exports = {
             }
         );
     },
+
+    async rutaProtegida (req, res) {
+        res.status(200).json({
+            mensaje: "Puede acceder a rutas protegidas",
+            estado: true
+        })
+    }
 }

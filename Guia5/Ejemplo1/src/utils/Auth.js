@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 
 const { APP_SECRET } = require('../config');
-const { UnAuthorizedError } = require('./app-errors');
+const { UnAuthorizedError, ForbiddenError } = require('./app-errors');
 
 module.exports = {
     /**
@@ -18,7 +18,7 @@ module.exports = {
      * @param {Request} req 
      * @returns 
      */
-    validateTokenSignature: async(req) => {
+    validateTokenSignature: async (req) => {
         const authHeader = req.headers['authorization'];
 
         if(typeof authHeader === 'undefined') {
@@ -27,14 +27,10 @@ module.exports = {
 
         const token = authHeader.split(' ')[1];
 
-        if(token === "undefined") {
-            throw new UnAuthorizedError('Token inválido');
-        }
-
+        //Verify: Verifica el token sea valido
         const payload = await jwt.verify(token, APP_SECRET, (err) => {
             if(err) {
-                console.error(err.expiredAt)
-                throw new UnAuthorizedError(err.message)
+                return false;
             }
         });
         
