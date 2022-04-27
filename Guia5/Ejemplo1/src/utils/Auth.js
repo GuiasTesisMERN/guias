@@ -10,7 +10,7 @@ module.exports = {
      * @returns 
      */
     generateAccessToken: (email) => {
-        return jwt.sign({email}, APP_SECRET, { expiresIn: '30s' })
+        return jwt.sign({email}, APP_SECRET, { expiresIn: '1h' })
     },
 
     /**
@@ -28,10 +28,11 @@ module.exports = {
         const token = authHeader.split(' ')[1];
 
         //Verify: Verifica el token sea valido
-        const payload = await jwt.verify(token, APP_SECRET, (err) => {
+        const payload = await jwt.verify(token, APP_SECRET, (err, decoded) => {
             if(err) {
                 return false;
             }
+            return decoded
         });
         
         return payload;
