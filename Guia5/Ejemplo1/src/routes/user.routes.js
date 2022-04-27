@@ -16,7 +16,7 @@ const asyncHandler = fn => (req, res, next) => {
 }
 
 UserRoute.get('/login', asyncHandler(validarLogin), asyncHandler(login));
-UserRoute.get('/estaAutenticado', asyncHandler(usuarioAutenticado), asyncHandler(rutaProtegida))
+UserRoute.get('/esta_autenticado', asyncHandler(usuarioAutenticado), asyncHandler(rutaProtegida))
 
 module.exports = {
     UserRoute
