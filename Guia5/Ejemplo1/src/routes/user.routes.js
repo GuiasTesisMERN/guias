@@ -15,7 +15,7 @@ const asyncHandler = fn => (req, res, next) => {
     Promise.resolve(fn(req, res, next)).catch(next)
 }
 
-UserRoute.get('/login', asyncHandler(validarLogin), asyncHandler(login));
+UserRoute.post('/login', asyncHandler(validarLogin), asyncHandler(login));
 UserRoute.get('/esta_autenticado', asyncHandler(usuarioAutenticado), asyncHandler(rutaProtegida))
 
 module.exports = {
