@@ -1,13 +1,15 @@
 ## Descripción
 
-Guia 5: Se implementaron los middleware custom, un manejador de errores,
-y un middleware para aplicar autenticación por Token.
+Guia 5: Se implementaron middlewares propios básicos, un manejador de errores, y un middleware para aplicar autenticación por Token.
+
+> Nota: Aqui esta el ejemplo explicado en la guia, ademas del ejericio propuesto que esta asignado en la misma.
+
 ## Diagrama Middlewares
 
 ```mermaid
 flowchart LR
     http_req[HTTP Request] --> express
-    subgraph express[Express JS]
+    subgraph express[Express JS NODE]
         ruta[Ruta \n GET/POST/PUT/DELETE]-.->cors[Cors Middleware]
         cors-->auth[Auth Middleware]
         auth-->main[Controller]
