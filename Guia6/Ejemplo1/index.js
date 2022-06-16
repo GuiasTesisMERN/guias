@@ -1,8 +1,11 @@
 const express = require('express');
 const { PORT } = require('./src/config');
-const { databaseConnection } = require('./src/config/database');
 const expressApp = require('./app');
-
+const logger = require('./src/utils/Logger');
+const { databaseConnection } = require('./src/config/database');
+/**
+ * Inicializa el servidor de NodeJS
+ */
 const StartServer = async() => {
     const app = express();
 
@@ -10,7 +13,8 @@ const StartServer = async() => {
     await expressApp(app);
 
     app.listen(PORT, () => {
-        console.log(`Servidor corriendo en http://localhost:${PORT}`);
+        logger.info(`Servidor corriendo en http://localhost:${PORT}`)
+        //console.log(`Servidor corriendo en http://localhost:${PORT}`);
     })
     .on('error', (err) => {
         console.log(err);

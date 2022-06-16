@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const logger = require('../../utils/Logger');
 const { DB_URL } = require('../index');
 
 module.exports = async() => {
@@ -7,10 +8,11 @@ module.exports = async() => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        console.log('Base de datos conectada.')
+        
+        logger.info('Base de datos conectada.')
     } catch (error) {
         console.log('Error ============================');
-        console.log(error);
+        logger.error(error);
         process.exit(1);
     }
 }

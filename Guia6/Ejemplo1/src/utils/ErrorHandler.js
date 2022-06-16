@@ -1,10 +1,10 @@
 const { AppError, STATUS_CODES } = require('./app-errors');
-const logger = require('./ErrorLogger')
+const logger = require('./Logger')
 
 /**
  * Verifica si el error es de la clase APPError
  * @param {Error} error 
- * @returns 
+ * @returns {boolean}
  */
 const isTrustError = (error) => {
     if(error instanceof AppError){
@@ -14,10 +14,16 @@ const isTrustError = (error) => {
     }
 }
 
-const ErrorHandler = async(err, req, res, next) => {
-    
-    //const errorLogger = new ErrorLogger();
+const isMongoError = (error) => {
+    if (error.name === "ValidationError") {
 
+    }
+    const field = Object.keys(error.keyValue);
+
+    console.log(field);
+}
+
+const ErrorHandler = async(err, req, res, next) => {
     const errorLogger = logger;
 
     process.on('uncaughtException', (reason, promise) => {
@@ -26,22 +32,25 @@ const ErrorHandler = async(err, req, res, next) => {
     })
 
     process.on('uncaughtException', (error) => {
-        errorLogger.log(error);
-        if(errorLogger.isTrustError(err)){
+        if(isTrustError(error)){
             //process exist // need restart
+		    console.log(`Uncaught Exception: ${error.message}`)
+			process.exit(-1);
         }
     })
+
+    console.log(err.name)
+    //isMongoError(err);
     
-    // console.log(err.description, '-------> DESCRIPTION')
-    // console.log(err.message, '-------> MESSAGE')
-    // console.log(err.name, '-------> NAME')
     if(err){
-        errorLogger.log({level: 'error', message: err});
+        errorLogger.error(err.message, {...err});
+        
         if(isTrustError(err)){
-            if(err.errorStack){
-                const errorDescription = err.errorStack;
+
+            if(err.errorStack) {
                 return res.status(err.statusCode).json({
-                    mensaje: errorDescription,
+                    mensaje: err.message,
+                    detalle: err.errorStack,
                     error: true
                 })
             }
@@ -49,11 +58,11 @@ const ErrorHandler = async(err, req, res, next) => {
                 mensaje: err.message,
                 error: true
             })
-        }else{
-            console.log(err);
-            //process exit // terriablly wrong with flow need restart
         }
-        return res.status(STATUS_CODES.INTERNAL_ERROR).json({'message': err.message})
+        return res.status(STATUS_CODES.INTERNAL_ERROR).json({
+            mensaje: err.message,
+            error: true,
+        });
     }
     next();
 }
