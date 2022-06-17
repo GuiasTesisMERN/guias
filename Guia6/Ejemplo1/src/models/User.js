@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     nombres: {
         type: String,
-        required: true,
+        required: true
     },
     apellidos: {
         type: String,
@@ -23,7 +23,11 @@ const UserSchema = new Schema({
             message: 'Formato de email no es válido'
         }
     },
-    password: String,
+    password: {
+        type: String,
+        required: true,
+        minlength: [6, 'La clave debe de contener mínimo 6 cáracteres']
+    },
     
 }, {
     timestamps: {

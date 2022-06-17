@@ -1,6 +1,6 @@
 // ./scr/routes/user.routes.js
 const { Router } = require('express');
-const { login, signUp, rutaProtegida } = require('../controllers/user.controller');
+const { login, signUp, profile } = require('../controllers/user.controller');
 const { usuarioAutenticado } = require('../middlewares/auth.middleware');
 const { validarLogin, validarSignUp } = require('../middlewares/user.middleware');
 const User = require('../models/User');
@@ -16,8 +16,9 @@ const asyncHandler = fn => (req, res, next) => {
 }
 
 UserRoute.post('/login', asyncHandler(validarLogin), asyncHandler(login));
-UserRoute.post('/sign_up', asyncHandler(validarSignUp), asyncHandler(signUp))
-UserRoute.get('/esta_autenticado', asyncHandler(usuarioAutenticado), asyncHandler(rutaProtegida))
+UserRoute.post('/sign_up', asyncHandler(validarSignUp), asyncHandler(signUp));
+
+UserRoute.get('/profile/:id', asyncHandler(usuarioAutenticado), asyncHandler(profile))
 
 module.exports = {
     UserRoute

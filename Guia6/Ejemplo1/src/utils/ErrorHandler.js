@@ -9,18 +9,48 @@ const logger = require('./Logger')
 const isTrustError = (error) => {
     if(error instanceof AppError){
         return error.isOperational;
-    }else{
-        return false;
     }
+    
+    return false;
 }
 
 const isMongoError = (error) => {
-    if (error.name === "ValidationError") {
-
+    //ValidationError es un error manejable en Mongo
+    
+    let mensaje = false
+    if (error.name === 'ValidationError') {
+        mensaje = handleValidationErrorMongo(error);
     }
-    const field = Object.keys(error.keyValue);
 
-    console.log(field);
+    // El código 11000 indica un error de duplicidad en un campo UNIQUE de la BD de Mongo
+    if(error.code === 11000) {
+        mensaje = handleDuplicateKeyError(error);
+    }
+
+    return mensaje;
+}
+
+const handleValidationErrorMongo = (error) => {
+    let errors = Object.values(error.errors).map(el => el.message);
+
+    let fields = Object.values(error.errors).map(el => el.path);
+
+    return {
+        error: true,
+        mensaje: errors,
+        campos: fields
+    };
+}
+
+const handleDuplicateKeyError = (error) => {
+    const field = Object.keys(error.keyValue);     
+    const errors = `El ${field} ya tiene una cuenta.`;
+
+    return {
+        error: true,
+        mensaje: errors,
+        campo: field
+    }
 }
 
 const ErrorHandler = async(err, req, res, next) => {
@@ -38,13 +68,10 @@ const ErrorHandler = async(err, req, res, next) => {
 			process.exit(-1);
         }
     })
-
-    console.log(err.name)
-    //isMongoError(err);
     
     if(err){
-        errorLogger.error(err.message, {...err});
         
+        errorLogger.error(err.message, {...err});
         if(isTrustError(err)){
 
             if(err.errorStack) {
@@ -59,6 +86,12 @@ const ErrorHandler = async(err, req, res, next) => {
                 error: true
             })
         }
+
+        const errorMongo = isMongoError(err);
+        if(errorMongo) {
+            return res.status(STATUS_CODES.BAD_REQUEST).json(errorMongo);
+        }
+
         return res.status(STATUS_CODES.INTERNAL_ERROR).json({
             mensaje: err.message,
             error: true,

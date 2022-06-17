@@ -3,15 +3,16 @@ const { UserModel } = require('../models/User');
 const UserRepository = require('../models/repository/UserRepository')
 const { BadRequestError } = require('../utils/app-errors');
 const { generateAccessToken } = require('../utils/Auth');
+const mongoose_objectid = require('mongoose/lib/types/objectid');
 
 const _repository = new UserRepository();
 
 module.exports = {
     /**
-     * @description Busca en el usuario por email y contraseña
+     * @description Busca en el usuario por email y contraseña, luego retorna los datos y el token de acceso
      * @param {email: string, password: string} userData 
      * @throws {BadRequestError}
-     * @returns {email: string, password: string} data
+     * @returns {email: string, password: string} 
      */
     async FindUserByEmailAndPassword(userData) {
         const { email, password } = userData;
@@ -36,6 +37,22 @@ module.exports = {
         };
     },
 
+    async FindUserById(id) {
+
+        // Validamos que el id sea un objetoID valido de mongo
+        if(!mongoose_objectid.isValid(id)) {
+            throw new BadRequestError("El usuario que intenta buscar no existe");
+        }
+
+        const usuario = await UserModel.findById(id);
+
+        if(usuario === null) {
+            throw new BadRequestError("El perfil de este usuario no existe");
+        }
+
+        return usuario;
+    },
+
     async CreateNewUser(userData) {
         
         let {nombres, apellidos, email, password} = userData;
@@ -46,5 +63,6 @@ module.exports = {
         );
 
         return newUser;
-    }
+    },
+
 }
