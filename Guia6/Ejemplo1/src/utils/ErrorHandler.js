@@ -2,6 +2,15 @@ const { AppError, STATUS_CODES } = require('./app-errors');
 const logger = require('./Logger')
 
 /**
+ * Higher order function para manejar las excepciones lanzadas en las 
+ * demas funciones debe de ir en la rutas
+ * @param {function} 
+ */
+const asyncHandler = fn => (req, res, next) => {
+    Promise.resolve(fn(req, res, next)).catch(next)
+}
+
+/**
  * Verifica si el error es de la clase APPError
  * @param {Error} error 
  * @returns {boolean}
@@ -44,7 +53,7 @@ const handleValidationErrorMongo = (error) => {
 
 const handleDuplicateKeyError = (error) => {
     const field = Object.keys(error.keyValue);     
-    const errors = `El ${field} ya tiene una cuenta.`;
+    const errors = `El ${field} ya existe en nuestros registros`;
 
     return {
         error: true,
@@ -68,7 +77,11 @@ const ErrorHandler = async(err, req, res, next) => {
 			process.exit(-1);
         }
     })
-    
+
+    process.on('warning', (error) => {
+        console.error(error.message)
+    });
+
     if(err){
         
         errorLogger.error(err.message, {...err});
@@ -101,3 +114,4 @@ const ErrorHandler = async(err, req, res, next) => {
 }
 
 module.exports = ErrorHandler;
+module.exports = asyncHandler;
