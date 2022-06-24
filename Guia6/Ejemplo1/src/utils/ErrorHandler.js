@@ -2,15 +2,6 @@ const { AppError, STATUS_CODES } = require('./app-errors');
 const logger = require('./Logger')
 
 /**
- * Higher order function para manejar las excepciones lanzadas en las 
- * demas funciones debe de ir en la rutas
- * @param {function} 
- */
-const asyncHandler = fn => (req, res, next) => {
-    Promise.resolve(fn(req, res, next)).catch(next)
-}
-
-/**
  * Verifica si el error es de la clase APPError
  * @param {Error} error 
  * @returns {boolean}
@@ -114,4 +105,3 @@ const ErrorHandler = async(err, req, res, next) => {
 }
 
 module.exports = ErrorHandler;
-module.exports = asyncHandler;
