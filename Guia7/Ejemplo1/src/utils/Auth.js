@@ -5,7 +5,7 @@ const { UnAuthorizedError, ForbiddenError } = require('./app-errors');
 
 module.exports = {
     /**
-     * Funcion para crear token en base al email del usuario
+     * Método para crear token en base al email del usuario
      * @param {string} email 
      * @returns 
      */
@@ -14,7 +14,7 @@ module.exports = {
     },
 
     /**
-     * Funcion para validar la finrma del token
+     * Método para validar token
      * @param {Request} req 
      * @returns 
      */
