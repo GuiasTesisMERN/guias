@@ -1,5 +1,6 @@
 // ./src/controllers/user.controller.js
-const { FindUserByEmailAndPassword, CreateNewUser } = require('../services/user.services');
+const { FindUserByEmailAndPassword, CreateNewUser, FindUserById } = require('../services/user.services');
+const { validateTokenSignature } = require("../utils/Auth");
 
 const login = async (req, res) => {
     const usuarioReqData = req.body;
@@ -26,7 +27,20 @@ const signUp = async (req, res) => {
     })
 };
 
+const profile = async (req, res) => {
+
+    let { id } = req.params;
+
+    const datos = await FindUserById(id);
+
+    res.status(200).json({
+        datos: datos,
+        estado: true
+    })
+}
+
 module.exports = {
     login,
-    signUp, 
+    signUp,
+    profile   
 }

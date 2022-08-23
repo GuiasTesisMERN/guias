@@ -14,3 +14,4 @@ Guia 6: Instalacion de MongoDB
 | Clave primaria (Primary key)  | Clave primaria (Por defecto)  |
 | Índice (Index)  | Índice (Index)  |
 | Group By  | Aggregation (Collection)  |
+

@@ -36,6 +36,22 @@ const FindUserByEmailAndPassword = async (userData) => {
     };
 }
 
+const FindUserById = async (id) => {
+
+    // Validamos que el id sea un objetoID valido de mongo
+    if(!mongoose_objectid.isValid(id)) {
+        throw new BadRequestError("El usuario que intenta buscar no existe");
+    }
+
+    const usuario = await UserModel.findById(id, {password: 0});
+
+    if(usuario === null) {
+        throw new BadRequestError("El perfil de este usuario no existe");
+    }
+
+    return usuario;
+}
+
 const CreateNewUser = async (userData) => {
         
     let {nombres, apellidos, email, password} = userData;
@@ -50,5 +66,6 @@ const CreateNewUser = async (userData) => {
 
 module.exports = {
     FindUserByEmailAndPassword,
+    FindUserById,
     CreateNewUser
 }
