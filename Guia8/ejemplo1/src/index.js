@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Elemento from "./Elemento";
 import MiLista from "./MiLista";
+import Bienvenido from './components/Bienvenido';
+import "./index.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,8 +24,12 @@ const tareas = [
 
 root.render(
   <React.StrictMode>
-    <Elemento name="Jose Munguia"/>
-    <h3>Mi lista de tareas</h3>
+    {/* Renderizado condicional */}
+    <Bienvenido estaLogeado={true}/>
+
+    {/*<Elemento name="Jose Munguia"/>*/}
+    <h3 className="titulo-lista">Mi lista de tareas</h3>
     <MiLista tareas={tareas} />
+
   </React.StrictMode>
 );
