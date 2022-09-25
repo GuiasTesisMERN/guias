@@ -1,0 +1,173 @@
+commit ba62885f4fe2bb1582cd5e32b2a36a62a314b134
+Author: Jose Angel Munguia Andrade <andrangel97@gmail.com>
+Date:   Sun Aug 28 18:51:18 2022 -0600
+
+    Guia9: Agregado ejemplo (parcialmente)
+
+commit 03d52fa32aa12efe69f8f54515b93126d4ae626c
+Author: Jose Angel Munguia Andrade <andrangel97@gmail.com>
+Date:   Sat Aug 27 19:05:29 2022 -0600
+
+    Guia8: Ejercicio agregado
+
+commit d175e7297f1dafbeeaa8e6feb46539bfa3bb7780
+Author: jose <andrangel97@gmail.com>
+Date:   Sat Aug 27 11:35:27 2022 -0600
+
+    Guia8 parcialmente agregada
+
+commit fa1123849b6bc66e83cac7bd920615ed1418666d
+Author: jose <andrangel97@gmail.com>
+Date:   Tue Aug 23 09:41:09 2022 -0600
+
+    Actualizando nombres package.json en las guias 3, 4, 5 y 7
+
+commit a859e5b14928fe000583a8fd083fb0575753bcaa
+Author: jose <andrangel97@gmail.com>
+Date:   Mon Aug 22 17:51:20 2022 -0600
+
+    Guia6 pasa a ser la guia7 y la guia6 queda en pausa
+
+commit 3434b245013821b137f3613d20e913ecc6bffa5c
+Author: andr497 <andrangel97@gmail.com>
+Date:   Thu Jun 23 20:40:10 2022 -0600
+
+    Guia 6: AsyncHandlerError arreglado
+
+commit b863c48f3faa12af8a0c4c32a012252faca0c754
+Author: andr497 <andrangel97@gmail.com>
+Date:   Sun Jun 19 19:06:10 2022 -0600
+
+    Guia6: pequeños cambios
+
+commit 11ecc5286adc2aae25c6c54e46d03eeb24bde786
+Author: jose <andrangel97@gmail.com>
+Date:   Fri Jun 17 16:28:02 2022 -0600
+
+    Remover .idea Guia6
+
+commit 43cee7759b6607204e895c3daa24a4a75fe8e67b
+Author: jose <andrangel97@gmail.com>
+Date:   Fri Jun 17 16:27:02 2022 -0600
+
+    Logger corregido, agregado manejador de error para mongo validaciones y mongoServerError
+
+commit 9fd43aa6a193a5a9da5e28126f870aba273f9c84
+Author: jose <andrangel97@gmail.com>
+Date:   Thu Jun 16 17:46:10 2022 -0600
+
+    Guia6: Agregando conexion a MongoDB, creacion de modelo User, agregando algunas mejoras al manejador de errores (no finalizado aun)
+
+commit 5c2b5b334e16d9ba404cbe43e1f5af520ae4b035
+Author: jose <andrangel97@gmail.com>
+Date:   Thu May 5 09:12:08 2022 -0600
+
+    Modificando README en las guias
+
+commit af1c997189d166d6a5d71081c820d48fbbfbdb06
+Author: jose <andrangel97@gmail.com>
+Date:   Thu May 5 08:26:34 2022 -0600
+
+    Agregando middleware para almacenar peticiones en el log
+
+commit a190338df8c95e61f0f520dfef5921d74ff6b561
+Author: andr497 <andrangel97@gmail.com>
+Date:   Tue Apr 26 21:05:04 2022 -0600
+
+    Guia5: funcion validateTokenSignature agregado el valor decoded en el callback de verify
+
+commit 1e3a12666bbd3d3cca4824dbdf4ea6d3cd842899
+Author: andr497 <andrangel97@gmail.com>
+Date:   Tue Apr 26 20:20:17 2022 -0600
+
+    Guia5: Renombrar ruta de CamelCase a snake_case
+
+commit 04fe3f6471e02541470bf4ba06b6a0b3180c4dea
+Author: jose <andrangel97@gmail.com>
+Date:   Tue Apr 26 17:51:04 2022 -0600
+
+    Autenticacion de rutas protegidas creadas
+
+commit 6a7055fd1b308f684367cc4a4b969ac64adf1752
+Author: andr497 <andrangel97@gmail.com>
+Date:   Mon Apr 25 22:17:26 2022 -0600
+
+    Validacion de token agregada
+
+commit fc5fdc0e1a1dd679452234473d248cbd6d235c88
+Author: jose <andrangel97@gmail.com>
+Date:   Mon Apr 25 17:56:50 2022 -0600
+
+    JWT agregado parcialmente
+
+commit 54e1c2de38ac1e6f78c200996ab99ebc27506696
+Author: jose <andrangel97@gmail.com>
+Date:   Mon Apr 25 14:05:32 2022 -0600
+
+    Removiendo carpeta de logs y logger mas simple
+
+commit e1d6752d7074be4303e3043df3f951aa0da650f4
+Author: andr497 <andrangel97@gmail.com>
+Date:   Sun Apr 24 21:36:46 2022 -0600
+
+    Cambios guia5 en el logger (parcial)
+
+commit ee866c18ba078be01bd11e95390c1085dee05a61
+Author: jose <andrangel97@gmail.com>
+Date:   Fri Apr 22 18:02:57 2022 -0600
+
+    Corrigiendo nombres de archivos ErrorLogger > logger
+
+commit b4e13dab5cd3c5b805c9f92ae58fe1d62d0dd4d6
+Author: jose <andrangel97@gmail.com>
+Date:   Tue Apr 19 17:59:37 2022 -0600
+
+    Agregando middleware de validacion de usuario login
+
+commit a6f045b067bae6499086fb67002f6d0b00d1ac15
+Author: andr497 <andrangel97@gmail.com>
+Date:   Mon Apr 18 20:13:27 2022 -0600
+
+    Guia5 -> Agregado manejador de errores global custom, removido conexion a MongoDB, agregada carpeta para los middlewares. Guia6 -> Copia crereada de la G5
+
+commit ac5efb3c5fb987cb03a73e46fedad88eb8c0cfd4
+Author: jose <andrangel97@gmail.com>
+Date:   Tue Apr 5 08:44:07 2022 -0600
+
+    Agregando README a los ejemplos de cada guia
+
+commit 87730bf08f11cfc6bc25f69952f49d289578db33
+Author: jose <andrangel97@gmail.com>
+Date:   Mon Apr 4 17:53:14 2022 -0600
+
+    Guia5 agregado metodo para registrar usuario (parcial)
+
+commit 56a22c34fb5c65b1e156b7fa9fa5205b6c58c59a
+Author: jose <andrangel97@gmail.com>
+Date:   Wed Mar 30 19:02:10 2022 -0600
+
+    Guia 4 estructura y ejercicio agregados
+
+commit d2092fa8328c357d7dcae7696ea231669ef287a1
+Author: jose <andrangel97@gmail.com>
+Date:   Sat Mar 26 18:47:32 2022 -0600
+
+    guia 4 estructura - incompleta
+
+commit 6c0eb3260d59af72938b39a5e556a5ac22516960
+Author: jose <andrangel97@gmail.com>
+Date:   Wed Mar 23 12:18:53 2022 -0600
+
+    guia-3-completa
+
+commit fd971d8f84b3d3b4e019a08371cf6ca5f1ed4efc
+Author: jose <andrangel97@gmail.com>
+Date:   Thu Mar 10 09:18:04 2022 -0600
+
+    Guia 2 completa
+
+commit 34183c5c56bfe8b0307442ea60d2b0c585cdab61
+Author: andr497 <andrangel97@gmail.com>
+Date:   Tue Mar 8 20:36:46 2022 -0600
+
+    guia-1-completa
