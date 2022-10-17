@@ -8,7 +8,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff'
 
 import { Controller } from "react-hook-form";
 
-const MyTextInput = ({ name, rules, control, label, half, autoFocus, type, handleShowPassword }) => {
+const MyTextInput = ({ name, rules, control, label, half, autoFocus, type, handleShowPassword, handleOnChange }) => {
     
     return (
         <Grid item xs={12} sm={half ? 6 : 12}>
@@ -24,7 +24,7 @@ const MyTextInput = ({ name, rules, control, label, half, autoFocus, type, handl
                     <TextField
                         helperText={error ? error.message : null}
                         error={!!error}
-                        onChange={onChange}
+                        onChange={handleOnChange}
                         fullWidth
                         label={label}
                         autoFocus={autoFocus}
