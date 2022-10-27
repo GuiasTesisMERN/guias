@@ -1,4 +1,9 @@
 /Guia*/*/node_modules
 /Guia*/*/logs
 /Guia*/*/package-lock.json
+
+/Guia*/*/*/node_modules
+/Guia*/*/*/logs
+/Guia*/*/*/package-lock.json
+
 *.diff
