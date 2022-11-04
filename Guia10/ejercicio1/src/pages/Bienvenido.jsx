@@ -1,15 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 
 import { UserContext } from './../Context/UserContext';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+
+import { listaTareas } from './../constants/index';
 
 const Bienvenido = () => {
 
     const {user, logout} = useContext(UserContext);
-    const tarea = new Array(4)
+    const [tarea, setTareas] = useState(listaTareas);
+
+    console.log(tarea)
 
     return (
         <>
@@ -19,10 +23,15 @@ const Bienvenido = () => {
 
             <div>
                 {
-                    tarea.map((v) => {
+                    tarea?.map((v, k) => {
                         return (
-                            <Button>
-                                <Link to={`/tareas/${v + 1}`} />
+                            <Button
+                                key={k}
+                                LinkComponent={Link}
+                                to={`/tareas/${v.id}`}
+                                variant='outlined'
+                            >
+                                Tarea {v.id}
                             </Button>
                         )
                     })
