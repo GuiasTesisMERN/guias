@@ -1,0 +1,29 @@
+import axios from "axios";
+
+export const axiosInstance = axios.create({
+    baseURL: 'http://192.168.1.24:8000',
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE'
+    }
+});
+
+//Interceptor Response
+axiosInstance.interceptors.response.use((res) => {
+    return res;
+}, (err)=> {
+    if(err.response.status === 401) {
+        localStorage.setItem("user", JSON.stringify({estado: false}))
+        return Promise.reject({
+            ...err.response
+        });
+    }
+
+    if(err.response.status === 400) {
+        return Promise.reject({
+            ...err.response.data
+        });
+    }
+
+    return Promise.reject(err);
+});
