@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 import LinearProgress from '@mui/material/LinearProgress';
+import Tooltip from '@mui/material/Tooltip';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -12,12 +13,17 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListSubheader from '@mui/material/ListSubheader';
+import IconButton from '@mui/material/IconButton';
 
 import TaskNotFinishIcon from '@mui/icons-material/CircleOutlined';
 import TaskFinishIcon from '@mui/icons-material/TaskAltOutlined';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
-const ListTodo = ({ data }) => {
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import { finalizarTask, deleteTask } from '../API/task';
+
+const ListTodo = ({ data, setData, token }) => {
 
     if(!data) {
         return (
@@ -27,7 +33,19 @@ const ListTodo = ({ data }) => {
         )
     }
 
-    console.log(data)
+    const onClickDelete = (id) => {
+        deleteTask(id, token)
+            .then((res) => {
+                setData({...res.data.datos});
+            });
+    }
+
+    const onClickFinalizar = (id) => {
+        finalizarTask(id, token)
+            .then((res) => {
+                setData([...data, res.data.datos])
+            });
+    }
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -58,6 +76,22 @@ const ListTodo = ({ data }) => {
                                         }}
                                     />
                                 </ListItemButton>
+                                <Tooltip title={v.finalizado ? "Tarea finalizada" : "Finalizar tarea"}>
+                                    <span>
+                                        <IconButton color="success"
+                                            onClick={(e) => {onClickFinalizar(v._id)}} 
+                                            disabled={v.finalizado}
+                                        >
+                                            <TaskFinishIcon/>
+                                        </IconButton>
+                                    </span>
+                                </Tooltip>
+                                
+                                <Tooltip title='Eliminar tarea'>
+                                    <IconButton color="error" onClick={(e) => {onClickDelete(v._id)}}>
+                                        <DeleteIcon/>
+                                    </IconButton>
+                                </Tooltip>
                             </ListItem>
                         ))
                     ) : (

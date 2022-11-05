@@ -31,7 +31,7 @@ const TodoList = () => {
           <FormTodo todo={data} setTodo={setData} token={user?.token} />
         </Grid>
         <Grid item md={6} xs={12}>
-          <ListTodo data={data} />
+          <ListTodo data={data} setData={setData} token={user?.token} />
         </Grid>
       </Grid>
     </>
