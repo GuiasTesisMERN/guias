@@ -4,15 +4,18 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
-import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Paper from '@mui/material/Paper';
+
+import { Link } from 'react-router-dom';
 
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import LoginIcon from "@mui/icons-material/Login"
 
 import { UserContext } from './../Context/UserContext';
-import AlertMessage from '../components/AlertMessage'
+import AlertMessage from '../components/AlertMessage';
+import MyTextField from '../components/MyTextField';
 
 const Login = () => {
     const { login, loading, error } = useContext(UserContext);
@@ -39,12 +42,13 @@ const Login = () => {
     return (
         <>
             <Container
-                component="section" maxWidth="sm"
+                component={Paper} maxWidth="sm"
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    flexDirection: "column"
+                    flexDirection: "column",
+                    padding: '2.5rem',
                 }}
             >
                 <Box sx={{
@@ -61,22 +65,19 @@ const Login = () => {
                     </Typography>
                 </Box>
                 <Grid component="form" onSubmit={handleSubmit} container spacing={3}>
-                    <Grid item xs={12}>
-                        <TextField 
-                            onChange={handleChange}
-                            id="email" name='email' type="email"
-                            fullWidth required
-                            label="E-mail" variant='outlined' 
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            onChange={handleChange}
-                            id="password" name='password' type="password"
-                            fullWidth required
-                            label="Contraseña" variant='outlined' 
-                        />
-                    </Grid>
+                    <MyTextField
+                        handleChange={handleChange}
+                        name='email' type="email"
+                        required value={formData.email}
+                        label="E-mail"
+                    />
+                    <MyTextField
+                        handleChange={handleChange}
+                        name='password' type="password"
+                        required value={formData.password}
+                        label="Contraseña"
+                    />
+                    
                     {
                         error ? (
                             <Grid item xs={12}>
@@ -96,6 +97,17 @@ const Login = () => {
                         >
                             Iniciar sesión
                         </Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant='subtitle1'
+                            component={Link}
+                            to={'/registrarse'}
+                            sx={{
+                                textDecoration: 'none'
+                            }}
+                        >
+                            ¿No tienes cuenta? Registrate aquí.
+                        </Typography>
                     </Grid>
                 </Grid>
             </Container>

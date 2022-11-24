@@ -4,15 +4,18 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
-import TextField from '@mui/material/TextField';
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Paper from '@mui/material/Paper';
 
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import LoginIcon from "@mui/icons-material/Login";
 
+import { Link } from 'react-router-dom';
+
 import { createNewUser } from '../API/user';
 import AlertMessage from '../components/AlertMessage';
+import MyTextField from '../components/MyTextField';
 
 const Registrarse = () => {
 
@@ -54,12 +57,13 @@ const Registrarse = () => {
 
     return (
         <>
-            <Container component="section" maxWidth="sm"
+            <Container component={Paper} maxWidth="sm"
                 sx={{
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    flexDirection: "column"
+                    flexDirection: "column",
+                    padding: '2.5rem'
                 }}>
                     <Box sx={{
                     display: 'flex',
@@ -75,51 +79,36 @@ const Registrarse = () => {
                     </Typography>
                 </Box>
                 <Grid component="form" onSubmit={handleSubmit} container spacing={3}>
-                    <Grid item xs={6}>
-                        <TextField 
-                            onChange={handleChange}
-                            id="nombres" name='nombres' 
-                            type="text" fullWidth required
-                            value={formData.nombres}
-                            label="Nombres" variant='outlined' 
-                        />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField 
-                            onChange={handleChange}
-                            id="apellidos" name='apellidos' 
-                            type="text" fullWidth required
-                            value={formData.apellidos}
-                            label="Apellidos" variant='outlined' 
-                        />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <TextField 
-                            onChange={handleChange}
-                            id="email" name='email' type="email"
-                            fullWidth required
-                            value={formData.email}
-                            label="E-mail" variant='outlined' 
-                        />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField 
-                            onChange={handleChange}
-                            id="password" name='password' type="password"
-                            fullWidth required
-                            value={formData.password}
-                            label="Contraseña" variant='outlined' 
-                        />
-                    </Grid>
-                    <Grid item xs={6}>
-                        <TextField 
-                            onChange={handleChange}
-                            id="password_confirmation" name='password_confirmation' 
-                            type="password" fullWidth required
-                            value={formData.password_confirmation}
-                            label="Confirmar Contraseña" variant='outlined' 
-                        />
-                    </Grid>
+                    <MyTextField
+                        half handleChange={handleChange}
+                        name='nombres' type="text"
+                        required value={formData.nombres}
+                        label="Nombres"
+                    />
+                    <MyTextField
+                        half handleChange={handleChange}
+                        name='apellidos' type="text"
+                        required value={formData.apellidos}
+                        label="Apellidos"
+                    />
+                    <MyTextField
+                        handleChange={handleChange}
+                        name='email' type="email"
+                        required value={formData.email}
+                        label="E-mail"
+                    />
+                    <MyTextField
+                        half handleChange={handleChange}
+                        name='password' type="password"
+                        required value={formData.password}
+                        label="Contraseña"
+                    />
+                    <MyTextField
+                        half handleChange={handleChange}
+                        name='password_confirmation' type="password"
+                        required value={formData.password_confirmation}
+                        label="Confirmar Contraseña"
+                    />
                     {
                         error ? (
                             <Grid item xs={12}>
@@ -150,6 +139,17 @@ const Registrarse = () => {
                         >
                             Registrarse
                         </Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Typography variant='subtitle1'
+                            component={Link}
+                            to={'/login'}
+                            sx={{
+                                textDecoration: 'none'
+                            }}
+                        >
+                            ¿Ya tienes cuenta?, Inicia sesión aquí.
+                        </Typography>
                     </Grid>
                 </Grid>
             </Container>

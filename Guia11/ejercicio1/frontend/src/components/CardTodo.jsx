@@ -55,16 +55,13 @@ const CardTodo = ({id, token, titulo, detalle, prioridad, user, finalizado, setF
                 justifyContent: 'space-between',
                 flexDirection: 'row-reverse'
             }}>
-                <Typography sx={{ fontSize: 12, textAlign: 'right' }} color="text.secondary" gutterBottom>
-                Tarea creada el {fechaFormateada} a las {horaFormateada}
-                <br/>
-                Tarea creada por: {user}
+                <Typography sx={{ fontSize: 12, marginLeft: '30px',textAlign: 'right' }} color="text.secondary" gutterBottom>
+                    {fechaFormateada} 
+                    <br/>
+                    {horaFormateada}
                 </Typography>
-                <Typography sx={{ mb: 1.5, fontSize: 12 }} color="text.secondary">
-              
-            </Typography>
                 <Typography sx={{ textTransform: 'uppercase' }} variant="h5" component="h5">
-                {titulo}
+                    {titulo}
                 </Typography>
             </Box>
             <Divider  />
@@ -82,6 +79,9 @@ const CardTodo = ({id, token, titulo, detalle, prioridad, user, finalizado, setF
                 readOnly
                 value={prioridad}
             />
+            <Typography sx={{ mt: 1.5, fontSize: 12 }} color="text.secondary">
+                {user}
+            </Typography>
           </CardContent>
           <CardActions>
             <Button 
@@ -95,7 +95,7 @@ const CardTodo = ({id, token, titulo, detalle, prioridad, user, finalizado, setF
             </Button>
             <Button 
                 color='error' 
-                variant='contained' size="small" 
+                variant='outlined' size="small" 
                 startIcon={<DeleteIcon/>}
                 onClick={onClickDelete}
             >

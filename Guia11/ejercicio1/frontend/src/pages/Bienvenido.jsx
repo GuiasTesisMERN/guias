@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 
 import Typography from '@mui/material/Typography';
-import Button from "@mui/material/Button"
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
 
 import { getProfile } from "./../API/user";
 import { UserContext } from './../Context/UserContext';
@@ -26,14 +28,29 @@ const Bienvenido = () => {
     }, [user, logout]);
 
     return (
-        <>
-            <Typography variant="h5">
-                Bienvenido, {data?.datos.nombres} {data?.datos.apellidos}
+        <Box
+            component={Paper}
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                alignItems: 'center',
+                minHeight: '400px'
+            }}
+        >
+            <Typography variant="h3">
+                Bienvenido
             </Typography>
-            <Button variant='contained' onClick={logout}>
-                Cerrar sesion
-            </Button>
-        </>   
+            <Divider
+                sx={{
+                    backgroundColor: 'black',
+                    width: '95%'
+                }}
+            />
+            <Typography variant="body1">
+                {data?.datos.nombres} {data?.datos.apellidos}
+            </Typography>
+        </Box>   
     )
 };
 

@@ -15,13 +15,15 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/ListAlt';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { UserContext } from './../../Context/UserContext';
 
 const Menu = () => {
     const { user, logout } = useContext(UserContext)
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+    const {pathname} = useLocation();
 
     let pages = [
         {titulo: 'Inicio', url: '/', privada: true},
@@ -102,6 +104,14 @@ const Menu = () => {
                         >
                             {pages.map((pagina, key) => (
                                 <MenuItem key={key} onClick={handleCloseNavMenu}
+                                    disabled={pathname === pagina.url}
+                                    sx={{
+                                        '&.Mui-disabled': {
+                                            boxSizing: 'border-box',
+                                            borderLeft: '2px solid black',
+                                            borderRadius: '0px'
+                                        }
+                                    }}
                                     component={Link} to={pagina.url}
                                 >
                                     <Typography textAlign="center">{pagina.titulo}</Typography>
@@ -123,8 +133,18 @@ const Menu = () => {
                         {pages.map((pagina, key) => (
                             <Button
                                 key={key} onClick={handleCloseNavMenu}
+                                disabled={pathname === pagina.url}
                                 LinkComponent={Link} to={pagina.url}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{   my: 2, 
+                                        color: 'white', 
+                                        display: 'block',
+                                        '&.Mui-disabled': {
+                                            color: 'white',
+                                            boxSizing: 'border-box',
+                                            borderBottom: '2px solid white',
+                                            borderRadius: '0px'
+                                        }
+                                    }}
                             >
                                 {pagina.titulo}
                             </Button>

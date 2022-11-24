@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 import { Link } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
+import Zoom from '@mui/material/Zoom';
 
 import TaskNotFinishIcon from '@mui/icons-material/CircleOutlined';
 import TaskFinishIcon from '@mui/icons-material/TaskAltOutlined';
@@ -24,6 +25,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { finalizarTask, deleteTask } from '../API/task';
 
 const ListTodo = ({ data, setData, token }) => {
+
+    const containerRef = useRef(null);
 
     if(!data) {
         return (
@@ -36,63 +39,72 @@ const ListTodo = ({ data, setData, token }) => {
     const onClickDelete = (id) => {
         deleteTask(id, token)
             .then((res) => {
-                setData({...res.data.datos});
+                const temporal = data.filter(obj => obj._id !== res.data.datos._id);
+
+                setData(temporal);
             });
     }
 
     const onClickFinalizar = (id) => {
         finalizarTask(id, token)
             .then((res) => {
-                setData([...data, res.data.datos])
+                let filtro = data.filter(obj => obj._id !== res.data.datos._id)
+                
+                setData([...filtro, res.data.datos])
             });
     }
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', maxWidth: '600px' }}>
         <Paper sx={{ width: '100%', bgcolor: 'background.paper' }}>
-            <List subheader={<ListSubheader inset>Lista de tareas</ListSubheader>}>
+            <List id="lista-todo" subheader={<ListSubheader inset>Lista de tareas</ListSubheader>}>
                 {
                     data.length > 0 ? (
                         data?.map((v, k) => (
-                            <ListItem key={k} disablePadding>
-                                <ListItemButton
-                                    component={Link}
-                                    to={`/tareas/${v._id}`}
-                                >
-                                    <ListItemIcon>
-                                        {
-                                            v.finalizado ? (
+                            <Zoom key={k} direction="left" in={true} 
+                                timeout={100 * (data.length - k)}
+                                container={containerRef.current}
+                            >
+                                <ListItem disablePadding>
+                                    <ListItemButton
+                                        component={Link}
+                                        to={`/tareas/${v._id}`}
+                                    >
+                                        <ListItemIcon>
+                                            {
+                                                v.finalizado ? (
+                                                    <TaskFinishIcon/>
+                                                ) : (
+                                                    <TaskNotFinishIcon/>
+                                                )
+                                            }
+                                        </ListItemIcon>
+                                    
+                                        <ListItemText
+                                            primary={v.titulo}
+                                            sx={{
+                                                textDecoration: v.finalizado ? 'line-through' : "none"
+                                            }}
+                                        />
+                                    </ListItemButton>
+                                    <Tooltip title={v.finalizado ? "Tarea finalizada" : "Finalizar tarea"}>
+                                        <span>
+                                            <IconButton color="success"
+                                                onClick={(e) => {onClickFinalizar(v._id)}} 
+                                                disabled={v.finalizado}
+                                            >
                                                 <TaskFinishIcon/>
-                                            ) : (
-                                                <TaskNotFinishIcon/>
-                                            )
-                                        }
-                                    </ListItemIcon>
-                                
-                                    <ListItemText
-                                        primary={v.titulo}
-                                        sx={{
-                                            textDecoration: v.finalizado ? 'line-through' : "none"
-                                        }}
-                                    />
-                                </ListItemButton>
-                                <Tooltip title={v.finalizado ? "Tarea finalizada" : "Finalizar tarea"}>
-                                    <span>
-                                        <IconButton color="success"
-                                            onClick={(e) => {onClickFinalizar(v._id)}} 
-                                            disabled={v.finalizado}
-                                        >
-                                            <TaskFinishIcon/>
+                                            </IconButton>
+                                        </span>
+                                    </Tooltip>
+                                    
+                                    <Tooltip title='Eliminar tarea'>
+                                        <IconButton color="error" onClick={(e) => {onClickDelete(v._id)}}>
+                                            <DeleteIcon/>
                                         </IconButton>
-                                    </span>
-                                </Tooltip>
-                                
-                                <Tooltip title='Eliminar tarea'>
-                                    <IconButton color="error" onClick={(e) => {onClickDelete(v._id)}}>
-                                        <DeleteIcon/>
-                                    </IconButton>
-                                </Tooltip>
-                            </ListItem>
+                                    </Tooltip>
+                                </ListItem>
+                            </Zoom>
                         ))
                     ) : (
                         <ListItem disablePadding>
@@ -120,4 +132,4 @@ const ListTodo = ({ data, setData, token }) => {
   )
 }
 
-export default ListTodo
+export default ListTodo;

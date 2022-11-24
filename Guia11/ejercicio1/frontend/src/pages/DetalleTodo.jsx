@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import LinearProgress from '@mui/material/LinearProgress';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper'
 
 import CardTodo from './../components/CardTodo';
 
@@ -42,6 +43,14 @@ const DetalleTodo = () => {
 
   return (
     <>
+        <Box 
+            component={Paper}
+            sx={{ 
+                display: 'flex',
+                justifyContent: 'center',
+                padding: '2.5rem'
+            }}
+        >
         {
             JSON.stringify(data) !== "{}" ? (
                 <CardTodo
@@ -56,13 +65,12 @@ const DetalleTodo = () => {
                     setFinalizado={setData}
                 />
             ) : (
-                <Box sx={{ textAlign: "center" }}>
-                    <Typography variant='subtitle2' component="span" >
-                        La tarea que intenta buscar no existe
-                    </Typography>
-                </Box>
+                <Typography variant='subtitle2' component="span" >
+                    La tarea que intenta buscar no existe
+                </Typography>
             )
-        }
+        }     
+        </Box>
     </>
   )
 }

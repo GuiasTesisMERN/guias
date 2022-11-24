@@ -62,9 +62,9 @@ const FormTodo = ({todo, setTodo, token}) => {
 
 
   return (
-    <Paper sx={{ width: '100%', maxWidth: 400, padding: "10px", bgcolor: 'background.paper' }}>
+    <Paper sx={{ width: '100%', maxWidth: '600px', padding: "10px", bgcolor: 'background.paper' }}>
         <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center", margin: '10px 0px' }}>
-            <Avatar sx={{ marginRight: "10px" }}>
+            <Avatar sx={{ marginRight: "10px", backgroundColor: 'primary.main' }} >
                 <AddTaskIcon/>
             </Avatar>
             <Typography variant='h5' component="h5">

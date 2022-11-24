@@ -20,8 +20,6 @@ const GetTaskById = async (id) => {
 
     const task = await TaskModel.findById(id).populate('user');
 
-    console.log(task);
-
     return task;
 }
 
